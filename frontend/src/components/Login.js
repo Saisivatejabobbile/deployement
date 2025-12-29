@@ -13,7 +13,8 @@ function Login({ onLoginSuccess, onSwitchToRegister }) {
     setLoading(true);
 
     try {
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const API_URL = process.env.REACT_APP_API_URL || 'https://deployement-foou.onrender.com';
+      console.log('API URL:', API_URL); // Debug log
       const response = await axios.post(`${API_URL}/api/login`, {
         email,
         password
@@ -22,6 +23,7 @@ function Login({ onLoginSuccess, onSwitchToRegister }) {
       localStorage.setItem('token', response.data.token);
       onLoginSuccess(response.data.user);
     } catch (err) {
+      console.error('Login error:', err); // Debug log
       setError(err.response?.data?.message || 'Login failed');
     } finally {
       setLoading(false);
