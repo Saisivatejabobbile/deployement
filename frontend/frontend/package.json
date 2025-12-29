@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "spotify-login-frontend": "file:.."
+  }
+}

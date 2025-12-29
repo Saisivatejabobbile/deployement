@@ -1,0 +1,8 @@
+{
+  "name": "spotify-login-app",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "vercel-build": "cd frontend && npm install && npm run build"
+  }
+}
