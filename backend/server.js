@@ -55,6 +55,26 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Spotify Login API',
+    status: 'running',
+    endpoints: {
+      register: 'POST /api/register',
+      login: 'POST /api/login'
+    }
+  });
+});
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok',
+    database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
+  });
+});
+
 // Register endpoint
 app.post('/api/register', async (req, res) => {
   try {
