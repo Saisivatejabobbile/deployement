@@ -14,8 +14,8 @@ function Register({ onRegisterSuccess, onSwitchToLogin }) {
     setLoading(true);
 
     try {
-      const API_URL = process.env.REACT_APP_API_URL || 'https://deployement-foou.onrender.com';
-      console.log('API URL:', API_URL); // Debug log
+      const API_URL = 'https://deployement-foou.onrender.com';
+      console.log('API URL:', API_URL);
       const response = await axios.post(`${API_URL}/api/register`, {
         email,
         password,
@@ -25,7 +25,7 @@ function Register({ onRegisterSuccess, onSwitchToLogin }) {
       localStorage.setItem('token', response.data.token);
       onRegisterSuccess(response.data.user);
     } catch (err) {
-      console.error('Register error:', err); // Debug log
+      console.error('Register error:', err);
       setError(err.response?.data?.message || 'Registration failed');
     } finally {
       setLoading(false);
