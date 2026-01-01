@@ -38,5 +38,14 @@ function App() {
     </div>
   );
 }
+const API_URL = process.env.REACT_APP_API_URL;
+
+fetch(`${API_URL}/login`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data),
+});
+
+console.log("API URL =", process.env.REACT_APP_API_URL);
 
 export default App;
